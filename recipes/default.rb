@@ -18,15 +18,22 @@ template "/tmp/rbpm_userapp_install.properties" do
   mode "0644"  
 end
 
-script "Install RBPM " do
-  interpreter "bash"
-  user "root"
-  cwd "/tmp"
-  code <<-EOH  
-  " \"#{jre_loc}/bin/java\" -jar \"#{rbpm_build_loc}\" -i silent -f \"/tmp/rbpm_userapp_install.properties\"; "  
-  EOH
-end
+# script "Install RBPM " do
+  # interpreter "bash"
+  # user "root"
+  # cwd "/tmp"
+  # code <<-EOH  
+  # " \"#{jre_loc}/bin/java\" -jar \"#{rbpm_build_loc}\" -i silent -f \"/tmp/rbpm_userapp_install.properties\"; "  
+  # EOH
+# end
 
+
+execute "Install RBPM" do
+ user "root" 
+ cwd "/tmp"
+ command " \"#{jre_loc}/bin/java\" -jar \"#{rbpm_build_loc}\" -i silent -f \"/tmp/rbpm_userapp_install.properties\"; "  
+ action :run
+end
 
 
 

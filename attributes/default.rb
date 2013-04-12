@@ -19,6 +19,6 @@
 
 default['rbpm']['rbpm_install_loc'] = "/opt/novell/idm/rbpm/UserApplication"
 default['rbpm']['rbpm_war_install_loc'] = "/home/vagrant/IDM402AE/test/products/RBPM/user_app_install/IDMProv.war"
-default['rbpm']['rbpm_jboss_install_loc'] = "/opt/novell/idm/rbpm/UserApplication"
+default['rbpm']['rbpm_jboss_install_loc'] = "/opt/novell/idm/rbpm/jboss"
 default['rbpm']['rbpm_build_loc'] = "/home/vagrant/IDM402AE/test/products/RBPM/user_app_install/IdmUserApp.jar"
 default['rbpm']['jre_loc'] = "/root/idm/jre"
