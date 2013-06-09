@@ -1,0 +1,508 @@
+# ========================================================================
+#
+# Copyright (c) 2008,2009 Unpublished Work of Novell, Inc. All Rights Reserved.
+#
+# THIS WORK IS AN UNPUBLISHED WORK AND CONTAINS CONFIDENTIAL,
+# PROPRIETARY AND TRADE SECRET INFORMATION OF NOVELL, INC. ACCESS TO
+# THIS WORK IS RESTRICTED TO (I) NOVELL, INC. EMPLOYEES WHO HAVE A NEED
+# TO KNOW HOW TO PERFORM TASKS WITHIN THE SCOPE OF THEIR ASSIGNMENTS AND
+# (II) ENTITIES OTHER THAN NOVELL, INC. WHO HAVE ENTERED INTO
+# APPROPRIATE LICENSE AGREEMENTS. NO PART OF THIS WORK MAY BE USED,
+# PRACTICED, PERFORMED, COPIED, DISTRIBUTED, REVISED, MODIFIED,
+# TRANSLATED, ABRIDGED, CONDENSED, EXPANDED, COLLECTED, COMPILED,
+# LINKED, RECAST, TRANSFORMED OR ADAPTED WITHOUT THE PRIOR WRITTEN
+# CONSENT OF NOVELL, INC. ANY USE OR EXPLOITATION OF THIS WORK WITHOUT
+# AUTHORIZATION COULD SUBJECT THE PERPETRATOR TO CRIMINAL AND CIVIL
+# LIABILITY.
+#
+# ========================================================================
+
+
+# This file contains name=value pairs that can be read by the Identity Manager 
+# User Application installer. This allows you to set all the values required 
+# here and execute the installer 'silently'. This is done with the command, 
+# java -jar ./IdmUserApp.jar -i silent -f <path to this file>. For example:
+#
+# java -jar ./IdmUserApp.jar -i silent -f /home/jdoe/idm-install-files/silent.properties
+
+# Required for silent installs. Do not change.
+NOVL_PROPS_FILE=1
+NOVL_SKIP_SET_DBDEFAULTS=1
+NOVL_JBOSS_POSTGRESQL_RUN=No
+
+# Set to false if you want to install and configure
+# set to true if you want to install only, and
+# configure later.
+# default = false
+NOVL_INSTALL_ONLY=false
+
+# Required
+# Application server for deployment
+# Valid values:
+# 'JBoss', 'WebSphere' or 'WebLogic' , no quotes
+NOVL_APP_SERVER_TYPE_CHOICE=JBoss
+
+# Required
+# Path to the install's JDBC driver
+# example: /home/jdoe/idm/jboss/server/idmuserapp/lib/mysql-connector-java-3.1.12-bin.jar
+NOVL_JDBC_DRIVER=/opt/novell/idm/rbpm/postgresql/postgresql-8.4-701.jdbc4.jar
+# Required
+# Database Driver Class name for the DB used
+# ex;
+# MySQL liquibase.database.MySQLDatabase
+# Oracle com.novell.soa.persist.OracleUnicodeDatabase
+# MSSQL com.novell.soa.persist.MSSQLUnicodeDatabase
+# Postgres liquibase.database.PostgresDatabase
+# DB2 liquibase.database.DB2Database
+NOVL_DB_DRIVER_CLASS_NAME= liquibase.database.core.PostgresDatabase
+
+# Required
+# Database Driver Name
+# ex; MySQL = com.mysql.jdbc.Driver
+NOVL_DB_DRIVER_NAME=org.postgresql.Driver
+
+# Required
+# Database connection URL
+# Ex; MySQL = jdbc:mysql://localhost:3306/mydatabase?sessionVariables=storage_engine=InnoDB
+# Ex; PostgreSQL jdbc:postgresql://PostgreSQLserver.com:5432/postgresdb
+NOVL_DB_JDBC_URL=jdbc:postgresql://127.0.0.1:5432/idmuserappdb
+
+# Required
+# Please enter the option to create the
+# database.
+# now = create the database now
+# file =  write SQL output to file
+# startup = create the databases at application start
+NOVL_CREATE_DB=now
+
+# Required
+# Populate the war with the IDM configurations entered below
+# or choose to configure it later, and just install
+# the user app files.
+# Values = Now or Later
+# ex; RUN_LDAPCONFIG=Now
+RUN_LDAPCONFIG=Now
+
+
+# No Longer used
+# If upgrade is true:
+# Special variable to the root of your previous installation
+# example: /home/jdoe/idm
+USER_MAGIC_FOLDER_5=
+
+# Required for silent installs
+# Do not try to auto-find the WAR for silent install
+# Do not change.
+NOVL_SKIP_FINDWAR=1
+
+# Required for silent installs
+# If this is a NEW database, enter true
+# else if existing, leave as false
+NOVL_DATABASE_NEW=true
+
+# Required
+# Valid values:
+# 'provisioning' or 'default', no quotes
+NOVL_WAR_TYPE=provisioning
+
+# Required
+# Valid values:
+# 'true' or 'false', no quotes
+# if NOVL_WAR_TYPE = default, this should be true
+NOVL_WAR_TYPE_STANDARD=default
+
+# Required
+# Valid values:
+# 'true' or 'false', no quotes
+# if NOVL_WAR_TYPE = provisioning this should be true
+NOVL_WAR_TYPE_PROVISIONING=true
+
+# Required
+# Path to the WAR file
+# example: /home/jdoe/idm-install-files/IDM.war
+NOVL_WAR_FILE=/home/vagrant/IDM402AE/test/products/RBPM/user_app_install/IDMProv.war
+
+# Required
+# The directory to install to
+# example: /opt/novell/idm
+USER_INSTALL_DIR=/opt/novell/idm/rbpm/UserApplication
+
+# Required
+# Leave the quotes in place. Valid values:
+# "MySQL"
+# "Oracle"
+# "Microsoft SQL Server"
+# "PostgreSQL"
+# "IBM DB2"
+NOVL_DB_TYPE=PostgreSQL
+
+# Optional
+# If the type is Oracle: 
+# We currently support 10g and 11g, however since
+# 11g uses the same dialect as 10g, Valid Value is
+# '10g', no quotes
+NOVL_DB_ORACLE_VERSION=
+
+# Required
+# Host name of your database server. 
+# examples: 
+#   localhost
+#   10.20.30.40
+#   myhost.mycompany.com
+NOVL_DB_HOST=127.0.0.1
+
+# Required
+# Port used by your database
+# example: MySQL is 3306
+NOVL_DB_PORT=5432
+
+# Required
+# Name of your database or SID (oracle)
+# example: idmuserappdb
+NOVL_DB_NAME=idmuserappdb
+
+# Required
+# Your database user for this database
+# example: root
+NOVL_DB_USER=idmadmin
+
+# Required
+# The password for the NOVL_DB_USER
+NOVL_DB_USER_PASSWORD=n
+NOVL_DB_USER_PASSWORD_CONFIRM=n
+
+# Required
+# This user has the credentials to create tables in the database
+# The NOVL_DB_ADMIN_USER
+NOVL_CONFIG_DBADMIN_NAME=idmadmin
+
+# Required
+# The password for the NOVL_DB_ADMIN_USER
+NOVL_CONFIG_DBADMIN_PASSWORD=n
+NOVL_CONFIG_DBADMIN_PASSWORD_CONFIRM=n
+
+# Required
+# Write schema to a file
+# Default is 0 , do not write
+# put 1 if you want to write to a file
+NOVL_CONFIG_WRITE_TO_FILE=0
+
+# Required if NOVL_CONFIG_WRITE_TO_FILE = 1
+# Write to file 
+# NOVL_CONFIG_WRITE_TO_FILE  MUST = 1
+NOVL_CONFIG_SCHEMA_FILENAME=1
+
+# Required
+# Both of these must be set to the root of your Java installation (JAVA_HOME)
+# example: /opt/idm/jboss-mysql/jre
+NOVL_JAVA_HOME=/root/idm/jre
+USER_MAGIC_FOLDER_1=
+
+# Required if using JBoss, otherwise leave blank
+# Base folder of your JBoss installation.
+# example: /opt/idm/jboss-mysql/jboss
+NOVL_JBOSS_BASE_FOLDER=/opt/novell/idm/rbpm/jboss
+
+# Required if using JBoss
+# Host name of your JBoss server
+# examples: 
+#   localhost
+#   10.20.30.40
+#   myhost.mycompany.com
+NOVL_JBOSS_HOST_NAME=127.0.0.1
+
+# Required if using JBoss, otherwise ignored
+# Copy the 'default' JBoss server? (non clustering)
+# Valid values: 1 (for true) or 0 (for false)
+NOVL_JBOSS_SERVER_DEFAULT=1
+
+# Required if using JBoss, otherwise ignored
+# Copy the 'all' JBoss server? (clustering)
+# Valid values: 1 (for true) or 0 (for false)
+NOVL_JBOSS_SERVER_ALL=0
+
+# Required 
+# Application context name
+# example: IDM
+NOVL_APPLICATION_NAME=IDMProv
+
+# Required if using JBoss, otherwise ignored
+# JBoss workflow engine
+# examples:
+#   localhost
+#   10.20.30.40
+#   myhost.mycompany.com
+NOVL_JBOSS_WFLOW_ENGINE=
+
+# User Application Configuration
+# Please see documentation for details on these settings.
+
+#Required. Specify the hostname or IP address for your LDAP server.
+NOVL_CONFIG_LDAPHOST=127.0.0.1
+
+#Required. Specify the credentials for the LDAP Administrator. This user must already exist.
+NOVL_CONFIG_LDAPADMIN=cn=admin,ou=servers,o=system
+
+#Required. Specify the LDAP Administrator password. 
+#This password is encrypted, based on the master key.
+######### IMPORTANT ##################
+# if the password contains a $, then you must replace
+# $ with $DOLLAR$
+# so the installer may interpret the special character properly.
+# ex; mypassword$DOLLAR$
+######### IMPORTANT ##################
+NOVL_CONFIG_LDAPADMINPASS=n
+
+#Required. Specify the LDAP distinguished name of the root container
+NOVL_CONFIG_ROOTCONTAINERNAME=o=data
+
+#Required. Specify the distinguished name of the User Application driver 
+NOVL_CONFIG_PROVISIONROOT=cn=UserApplication,cn=driverset1,o=system
+                          
+#Required. Specify the Root of the User Application driver 
+# ex; cn=TestDrivers,o=novell
+NOVL_CONFIG_DRIVERSET_ROOT=cn=driverset1,o=system
+
+#Required. An existing user in the Identity Vault who has the rights to 
+#perform administrative tasks for the User Application user container specified. 
+#This user can use the Administration tab of the User Application to administer the portal.
+NOVL_CONFIG_LOCKSMITH=cn=uaadmin,ou=sa,o=data
+
+#Required for Provisioning. This role is available in the provisioning version of Identity Manager.
+NOVL_CONFIG_PROVLOCKSMITH=cn=uaadmin,ou=sa,o=data
+
+#Required. Specify the LDAP distinguished name (DN) or fully qualified 
+#LDAP name of the user container. 
+NOVL_CONFIG_USERCONTAINERDN=o=data
+
+
+#Required. This role is available in the Novell Identity Manager 
+#Roles Based Provisioning Module.
+NOVL_CONFIG_ROLECONTAINERDN=cn=uaadmin,ou=sa,o=data
+
+#Required. This is the Compliance/Attestation admin
+#Compliance Container DN.
+NOVL_CONFIG_COMPLIANCECONTAINERDN=cn=uaadmin,ou=sa,o=data
+
+#Required. This is the RBPM Security admin
+#Security ADdmin DN.
+NOVL_RBPM_SEC_ADMINDN=cn=uaadmin,ou=sa,o=data
+
+#Required. This is RBPM Resources Admin
+#Resources Admin DN.
+NOVL_RBPM_RESOURCE_ADMINDN=cn=uaadmin,ou=sa,o=data
+
+#Required. This is the RBPM COnfiguration Admin
+#RBPM Resources Admin DN.
+NOVL_RBPM_CONFIG_ADMINDN=cn=uaadmin,ou=sa,o=data
+
+# Reporting Admin
+NOVL_REPORT_ADMIN=cn=uaadmin,ou=sa,o=data
+
+#Required. Specify the LDAP distinguished name (DN) or fully 
+# qualified LDAP name of the group container.
+NOVL_CONFIG_GROUPCONTAINERDN=ou=groups,o=data
+
+# Required. ex; subtree
+NOVL_CONFIG_GROUPSEARCHSCOPE=subtree
+
+#Required. ex; subtree
+NOVL_CONFIG_USERSEARCHSCOPE=subtree
+
+#Required.Specify the full path to your keystore ( cacerts) file 
+# of the JRE that the application server application server is using. 
+NOVL_CONFIG_KEYSTOREPATH=/root/idm/jre/lib/security/cacerts
+
+#Required. Specify the cacerts password. The default is changeit.
+NOVL_CONFIG_KEYSTOREPASSWORD=changeit
+
+# Required. 
+# ecify True to require that all communication using the 
+# admin account be done using a secure socket 
+# (this option can have adverse performance implications). 
+# This setting allows other operations that don't require SSL to operate without SSL.
+NOVL_CONFIG_SECUREADMINCONNECTION=true
+
+# Required
+# Specify True to require that all communication done on the 
+# logged-in user's account be done using a secure socket 
+# (this option can have severe adverse performance implications). 
+# This setting allows other operations that don't require SSL to operate without SSL.
+NOVL_CONFIG_SECUREUSERCONNECTION=true
+
+#Required. 
+# Specify an application session timeout interval.
+NOVL_CONFIG_SESSIONTIMEOUT=10
+
+#Required. 
+# Specify the non-secure port for your LDAP server, for example 389.
+NOVL_CONFIG_LDAPPLAINPORT=389
+
+#Required. 
+# Specify the secure port for your LDAP server, for example 636.
+NOVL_CONFIG_LDAPSECUREPORT=636
+
+# Required. 
+# Specify True to allow users who are not logged in to 
+# access the LDAP Public Anonymous Account.
+NOVL_CONFIG_ANONYMOUS=true
+
+# Optional
+NOVL_CONFIG_GUEST=
+
+# Optional
+NOVL_CONFIG_GUESTPASS=
+
+# Optional
+NOVL_CONFIG_EMAILNOTIFYHOST=
+
+# Optional
+NOVL_CONFIG_EMAILNOTIFYPORT=8081
+
+# Optional
+NOVL_CONFIG_EMAILNOTIFYSECUREPORT=
+
+#Required. Specify e-mail From a user in provisioning e-mail.
+NOVL_CONFIG_NOTFSMTPEMAILFROM=me@mycompany.com
+
+# Optional. 
+# Specify the SMTP e-mail host that provisioning e-mail is using. 
+# This can be an IP address or a DNS name.
+NOVL_CONFIG_NOTFSMTPEMAILHOST=
+
+# Optional.
+NOVL_CONFIG_USEEXTPWDWAR=
+
+# Optional.
+NOVL_CONFIG_EXTPWDWARPATH=
+
+# Optional.
+NOVL_CONFIG_EXTPWDWARRTNPATH=
+
+# Optional.
+NOVL_CONFIG_FORGOTWEBSERVICEURL=
+
+#Required. The LDAP user object class (typically inetOrgPerson).
+NOVL_CONFIG_USEROBJECTATTRIBUTE=inetOrgPerson
+
+#Required. The LDAP attribute (for example, CN) that represents the user’s login name. ex; cn
+NOVL_CONFIG_LOGINATTRIBUTE=cn
+
+#Required. The LDAP attribute used as the identifier when looking up users or groups. 
+#This is not the same as the login attribute, which is used only during login, 
+#and not during user/group searches. ex; cn
+NOVL_CONFIG_NAMINGATTRIBUTE=cn
+
+#Required. The LDAP attribute that represents the user’s group membership. 
+#Do not use spaces in this name. ex; groupMembership
+NOVL_CONFIG_USERMEMBERSHIPATTRIBUTE=groupMembership
+
+#Required.The LDAP group object class (typically groupofNames). ex; groupOfNames
+NOVL_CONFIG_GROUPOBJECTATTRIBUTE=groupOfNames
+
+#Required. Specify the attribute representing the user’s group membership. 
+#Do not use spaces in this name. ex; member
+NOVL_CONFIG_GROUPMEMBERSHIPATTRIBUTE=member
+
+#Required. Specify True to use dynamic groups. Otherwise, specify False.
+NOVL_CONFIG_USEDYNAMICGROUPS=true
+
+#Required. Specify the LDAP dynamic group object class (typically dynamicGroup).
+NOVL_CONFIG_DYNAMICGROUPOBJECTCLASS=dynamicGroup
+
+
+# Optional.
+NOVL_CONFIG_TRUSTEDSTOREPATH=
+
+# Optional.
+NOVL_CONFIG_TRUSTEDSTOREPASSWORD=
+
+# Optional.
+NOVL_CONFIG_AUDITCERT=
+NOVL_CONFIG_AUDITKEYFILEPATH=
+
+#Required. Specify False to disable simultaneous logout. 
+NOVL_CONFIG_ICSLOGOUTENABLED=false
+
+# Optional.
+# Access Manager and iChain Settings: Simultaneous Logout Page.
+# if NOVL_CONFIG_ICSLOGOUTENABLED=false, then use
+# https://yourAccessGatewayServer/AGLogout
+NOVL_CONFIG_ICSLOGOUTPAGE=https://yourAccessGatewayServer/AGLogout
+
+# Optional
+NOVL_CONFIG_EMAILNOTIFYPROTOCOL=
+
+# Optional
+NOVL_CONFIG_EMAILNOTIFYSECUREPROTOCOL=
+
+# Optional
+NOVL_CONFIG_OCSPURI=
+
+# Optional
+NOVL_CONFIG_AUTHCONFIGPATH=
+
+# Optional
+NOVL_CONFIG_CREATEEDIRECTORYINDEX=
+
+# Optional
+NOVL_CONFIG_SERVERDN=
+
+# Both of these are required. Set to the same value.
+# Import a master key if you already have one. If not create a new one.
+# Valid values: 'true' or 'false', no quotes
+NOVL_MASTER_KEY_IMPORT=false
+NOVL_MASTER_KEY_DO_IMPORT=false
+
+# This will be the opposite of the previous 2 properties
+# Valid values: 'true' or 'false', no quotes
+NOVL_MASTER_KEY_DONT_IMPORT=true
+
+# If 'import a master key' set the master key here
+NOVL_MASTER_KEY=
+
+# Enable Novell Identity Audit and Sentinel
+# Valid values: 'true' or 'false', no quotes
+NOVL_AUDIT_OFF=false
+
+# This will be the opposite of the previous property
+# Valid values: 'true' or 'false', no quotes
+NOVL_AUDIT_ON=true
+
+# Optional
+# Path to the Novell Identity Audit and Sentinel server
+# examples:
+#   localhost
+#   10.20.30.40
+#   myhost.mycompany.com
+NOVL_AUDIT_SERVER=
+
+# Optional
+# Path to a directory holding the Novell Identity Audit and
+# Sentinel log cache
+# example: /opt/idm/idmuserapp
+NOVL_AUDIT_LOG_CACHE_DIR=
+
+# Required
+# Enable OpenXDAS Audit
+# Valid values: 'true' or 'false', no quotes
+NOVL_XDAS_OFF=true
+
+# Required
+# This will be the opposite of the previous property
+# Valid values: 'true' or 'false', no quotes
+NOVL_XDAS_ON=false
+
+# Required if OpenXDAS configured
+# Path to the OpenXDAS Audit server
+# examples:
+#   localhost
+#   10.20.30.40
+#   myhost.mycompany.com
+NOVL_XDAS_SERVER_NAME=
+
+# Required if OpenXDAS configured
+# Path to a directory holding the OpenXDAS log cache
+# example: /opt/idm/idmuserapp
+NOVL_XDAS_LOGGING_DIR=
+
