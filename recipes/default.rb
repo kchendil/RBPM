@@ -32,6 +32,7 @@ execute "Install RBPM" do
  user "root" 
  cwd "/tmp"
  command " \"#{jre_loc}/bin/java\" -jar \"#{rbpm_build_loc}\" -i silent -f \"/tmp/rbpm_userapp_install.properties\"; "  
+ creates "/opt/novell/idm/rbpm/UserApplication/Identity_Manager_User_Application_InstallLog.log"
  action :run
 end
 
