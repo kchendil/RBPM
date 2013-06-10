@@ -24,7 +24,7 @@ end
  # end
 
 execute "Configure RBPM" do
-  command " \"#{jre_loc}/bin/java\" -jar #{rbpm_build_loc} -i silent -f \"/tmp/rbpm_userapp_configure.properties\" " 
+  command " \"#{jre_loc}/bin/java\" -jar #{rbpm_build_loc} -i silent -f \"/tmp/rbpm_userapp_configure.properties\" > /opt/novell/idm/rbpm/UserApplication/Novell-Custom-Install2.log " 
   creates "/opt/novell/idm/rbpm/UserApplication/Novell-Custom-Install2.log"
   action :run
   end
